@@ -3,6 +3,7 @@ import { createApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/vue3";
 import { Quasar } from "quasar";
 import { createPinia } from "pinia";
+import PortalVue from "portal-vue";
 
 // Import icon libraries
 import "@quasar/extras/roboto-font/roboto-font.css";
@@ -12,15 +13,9 @@ import "@quasar/extras/mdi-v7/mdi-v7.css";
 import "quasar/src/css/index.sass";
 
 // Import Internationalization
-import { createI18n } from "vue-i18n";
-import Locale from "./vue-i18n-locales.generated.js";
+import { i18nVue } from "laravel-vue-i18n";
 
-const language = document.documentElement.lang.substring(0, 2);
-const i18n = createI18n({
-    locale: language,
-    allowComposition: true,
-    message: Locale,
-});
+import AppLayout from "../vue/layouts/App.vue";
 
 createInertiaApp({
     resolve: (name) => {
@@ -32,11 +27,18 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
-            .use(i18n)
             .use(createPinia())
             .use(Quasar, {
                 plugins: {},
             })
+            .use(i18nVue, {
+                resolve: async (lang) => {
+                    const langs = import.meta.glob("../lang/*.json");
+                    return await langs[`../lang/${lang}.json`]();
+                },
+            })
+            .use(PortalVue)
+            .component("AppLayout", AppLayout)
             .mount(el);
     },
 });
