@@ -16,6 +16,7 @@ import "quasar/src/css/index.sass";
 import { i18nVue } from "laravel-vue-i18n";
 
 import AppLayout from "../vue/layouts/App.vue";
+import AuthLayout from "../vue/layouts/Auth.vue";
 
 createInertiaApp({
     resolve: (name) => {
@@ -39,6 +40,7 @@ createInertiaApp({
             })
             .use(PortalVue)
             .component("AppLayout", AppLayout)
+            .component("AuthLayout", AuthLayout)
             .mount(el);
     },
 });

@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/login', function() {
+    return Inertia('Auth/Login');
+})->name('login');
+
 Route::get('/', function () {
     return Inertia('App/IPAddress/List');
-});
+})->middleware('auth');
