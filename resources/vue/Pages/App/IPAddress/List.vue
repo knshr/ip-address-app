@@ -1,5 +1,5 @@
 <template lang="">
-    <div>test</div>
+    <AppLayout> this is IP Address List </AppLayout>
 </template>
 <script>
 export default {};
