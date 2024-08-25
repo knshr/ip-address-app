@@ -1,0 +1,39 @@
+{
+    "label.creator": "Created by John Arby \"Kenny\" Arceo",
+    "label.ip.address": "IP Address",
+    "label.ip.addresses": "IP Addresses",
+    "label.logout": "Logout",
+    "label.login": "Login",
+    "label.username": "Username",
+    "label.password": "Password",
+    "label.remember.me": "Remember Me",
+    "label.label": "Label",
+    "label.actions": "Actions",
+    "label.add": "Add",
+    "label.edit": "Edit",
+    "label.update": "Update",
+    "label.cancel": "Cancel",
+    "label.audit.logs": "Audit Logs",
+    "label.add.ip.address": "Add IP Address",
+    "label.edit.ip.address": "Edit IP Address",
+    "label.date": "Date",
+    "label.event": "Event",
+    "label.old.values": "Old Values",
+    "label.new.values": "New Values",
+    "label.audited": "Audited",
+
+    "message.login.success": "Login Successfully",
+    "message.logout.success": "Logout Successfully",
+
+    "info.no.results.found": "No Results Found",
+
+    "validation.ip.address.doesnt.exist": "IP Address doesn't exist",
+    "validation.ip.address.is.not.valid": "IP Address is not valid",
+
+    "error.save.failed": "Save Failed",
+    "error.update.failed": "Update Failed",
+    "error.show.failed": "Show Failed",
+
+    "success.created": "Successfully Created",
+    "success.updated": "Successfully Updated"
+}
