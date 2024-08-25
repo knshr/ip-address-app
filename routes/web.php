@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,11 +13,18 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::middleware('guest')->group(function () {
+    Route::get('/login', function() {
+        return Inertia('Auth/Login');
+    })->name('login');
+    
+    Route::post('login', [LoginController::class, 'store']);
+});
 
-Route::get('/login', function() {
-    return Inertia('Auth/Login');
-})->name('login');
+Route::middleware('auth')->group(function () {
+    Route::get('logout', [LoginController::class, 'destroy']);
 
-Route::get('/', function () {
-    return Inertia('App/IPAddress/List');
-})->middleware('auth');
+    Route::get('/', function () {
+        return Inertia('App/IPAddress/List');
+    })->name('app.ipaddress.list');
+});

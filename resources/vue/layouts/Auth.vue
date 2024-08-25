@@ -14,3 +14,7 @@ export default {
     },
 };
 </script>
+<style lang="sass">
+.pointer
+    cursor: pointer
+</style>

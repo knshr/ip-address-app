@@ -1,3 +1,6 @@
+<script setup>
+import Loader from "../Loader.vue";
+</script>
 <template>
     <div class="column" style="height: 80vh">
         <div class="col self-center"></div>
@@ -17,18 +20,10 @@
                 </q-card-section>
             </q-card>
         </div>
+        <div class="col self-center"></div>
+        <Loader />
     </div>
 </template>
-<script>
-export default {
-    props: {
-        title: {
-            type: String,
-            default: "",
-        },
-    },
-};
-</script>
 <style lang="sass" scoped>
 .page-card
     width: 100%
