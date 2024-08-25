@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Providers\RouteServiceProvider;
+use App\Traits\AuditLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    use AuditLog;
     /**
      * Handle an incoming authentication request.
      *
@@ -20,6 +22,11 @@ class LoginController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        $this->setAuditableKeyType(Auth::id(),'users')->toAudit([
+            'old' => [],
+            'new' => [],
+        ], 'logged in');
 
         return to_route('app.ipaddress.list');
      }

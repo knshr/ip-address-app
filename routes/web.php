@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuditLogController;
+use App\Http\Controllers\IPAddressController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,4 +29,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return Inertia('App/IPAddress/List');
     })->name('app.ipaddress.list');
+
+    Route::get('/audit-logs', [AuditLogController::class, 'index']);
+    Route::get('/audit-logs/{id}/ip-address', [AuditLogController::class, 'ipAddresses']);
+
+    Route::apiResources([
+        'ip_address' => IPAddressController::class,
+    ]);
 });
