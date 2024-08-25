@@ -3,7 +3,7 @@ import { createApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/vue3";
 import { Quasar } from "quasar";
 import { createPinia } from "pinia";
-import PortalVue from "portal-vue";
+import quasarIconSet from "quasar/icon-set/mdi-v7";
 
 // Import icon libraries
 import "@quasar/extras/roboto-font/roboto-font.css";
@@ -15,6 +15,7 @@ import "quasar/src/css/index.sass";
 // Import Internationalization
 import { i18nVue } from "laravel-vue-i18n";
 
+// Layouts
 import AppLayout from "../vue/layouts/App.vue";
 import AuthLayout from "../vue/layouts/Auth.vue";
 
@@ -31,6 +32,7 @@ createInertiaApp({
             .use(createPinia())
             .use(Quasar, {
                 plugins: {},
+                iconSet: quasarIconSet,
             })
             .use(i18nVue, {
                 resolve: async (lang) => {
@@ -38,7 +40,6 @@ createInertiaApp({
                     return await langs[`../lang/${lang}.json`]();
                 },
             })
-            .use(PortalVue)
             .component("AppLayout", AppLayout)
             .component("AuthLayout", AuthLayout)
             .mount(el);
